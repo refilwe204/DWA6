@@ -1,3 +1,4 @@
+
 /**
  * @typedef {Object} Book
  * @property {string} id - The ID of the book.

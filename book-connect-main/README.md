@@ -17,7 +17,8 @@ This is a JavaScript application that allows users to search for books based on 
 - JavaScript
 - HTML
 - CSS
-
+- ChatGPT
+  
 ## Getting Started
 
 To run the application locally, follow these steps:
