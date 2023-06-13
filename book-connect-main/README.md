@@ -1,5 +1,14 @@
 # DWA6
 
+- [DWA6](#dwa6)
+- [Book Search App](#book-search-app)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [License](#license)
+
+
 # Book Search App
 
 This is a JavaScript application that allows users to search for books based on various criteria such as title, author, and genre. The application displays a list of books with their details and provides filtering options to refine the search results. Users can also customize the theme of the application.

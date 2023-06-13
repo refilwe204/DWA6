@@ -1,4 +1,3 @@
-
 /**
  * @typedef {Object} Book
  * @property {string} id - The ID of the book.
@@ -16,11 +15,6 @@
  * @property {string} light - The light color value.
  */
 
-/**
- * @typedef {Object} CSS
- * @property {ThemeCSS} day - The CSS for the day theme.
- * @property {ThemeCSS} night - The CSS for the night theme.
- */
 
 /**
  * @typedef {Object} App
@@ -38,8 +32,8 @@ const starting = document.createDocumentFragment();
 
 /**
  * Creates a preview element for a book.
- * @param {Book} book - The book object.
- * @returns {HTMLButtonElement} - The preview element.
+ * @param {Book} book - indicate the book parameter should be in an object.
+ * @returns {HTMLButtonElement} - The returned preview element.
  */
 function createPreviewElement({ author, id, image, title }) {
   const element = document.createElement('button');
@@ -54,13 +48,39 @@ function createPreviewElement({ author, id, image, title }) {
     </div>
   `;
 
-  return element;
+  const showDetails = () => {
+    // Retrieve the corresponding book using the id
+    const book = books.find((book) => book.id === id);
+
+    // Update the active book details in the list
+    if (book) {
+      document.querySelector('[data-list-active]').open = true;
+      document.querySelector('[data-list-blur]').src = book.image;
+      document.querySelector('[data-list-image]').src = book.image;
+      document.querySelector('[data-list-title]').innerText = book.title;
+      document.querySelector('[data-list-subtitle]').innerText = `${authors[book.author]} (${new Date(
+        book.published
+      ).getFullYear()})`;
+      document.querySelector('[data-list-description]').innerText = book.description;
+    }
+  };
+
+  const getElement = () => element;
+
+  return {
+    showDetails,
+    getElement,
+  };
 }
 
+
 for (const book of matches.slice(0, BOOKS_PER_PAGE)) {
-  const element = createPreviewElement(book);
+  const preview = createPreviewElement(book);
+  const element = preview.getElement();
+  element.addEventListener('click', preview.showDetails);
   starting.appendChild(element);
 }
+
 
 document.querySelector('[data-list-items]').appendChild(starting);
 
@@ -296,6 +316,7 @@ document.querySelector('[data-list-items]').addEventListener('click', (event) =>
       }
 
       active = result;
+      
     }
   }
 
