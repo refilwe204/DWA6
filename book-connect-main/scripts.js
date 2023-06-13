@@ -35,6 +35,7 @@ let matches = books;
 // Display the initial set of books on the page
 const starting = document.createDocumentFragment();
 
+// where my book preview is encapsulated
 /**
  * Creates a preview element for a book.
  * @param {Book} book - The book object.
@@ -92,6 +93,7 @@ function createOptionElements(container, defaultValue, options) {
 createOptionElements('genres', 'any', genres);
 createOptionElements('authors', 'any', authors);
 
+// where all mmy event listeners are encapsulated 
 /**
  * @type {App}
  */
